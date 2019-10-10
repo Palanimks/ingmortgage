@@ -23,7 +23,7 @@ public class MortgageLoan {
 	private Double propertyValue;
 	@OneToOne
 	private Customer customerId;
-
+	
 	public Long getLoanAccountNumber() {
 		return loanAccountNumber;
 	}
