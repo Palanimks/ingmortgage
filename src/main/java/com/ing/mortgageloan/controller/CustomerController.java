@@ -30,7 +30,7 @@ public class CustomerController {
 	private LoginService loginService;
 	
 	@PostMapping("/register")
-	public ResponseEntity<CustomerResponseDto> register(@RequestBody CustomerRequestDto customerRequestDto){
+	public ResponseEntity<CustomerResponseDto> register(@RequestBody CustomerRequestDto customerRequestDto) throws Exception{
 		return new ResponseEntity<>(customerService.register(customerRequestDto),HttpStatus.CREATED);
 	}
 	

@@ -10,6 +10,6 @@ import com.ing.mortgageloan.dto.CustomerResponseDto;
 @Service
 public interface CustomerService {
 
-	public CustomerResponseDto register(CustomerRequestDto customerRequestDto);
+	public CustomerResponseDto register(CustomerRequestDto customerRequestDto) throws Exception;
 
 }
