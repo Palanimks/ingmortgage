@@ -22,11 +22,11 @@ public class LoginServiceImpl implements LoginService {
 	private CustomerRepository customerRepository;
 
 	@Override
-	public LoginResponseDto login(LoginRequestDto logindto) {
+	public LoginResponseDto login(LoginRequestDto loginRequestDto) {
 
 		LoginResponseDto loginResponseDto = new LoginResponseDto();
 
-		Customer customer = customerRepository.findByEmailAndPassword(logindto.getEmailId(), logindto.getPassword());
+		Customer customer = customerRepository.findByEmailIdAndPassword(loginRequestDto.getEmailId(), loginRequestDto.getPassword());
 
 		if (customer == null) {
 			throw new RuntimeException();

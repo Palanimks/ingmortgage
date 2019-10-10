@@ -9,6 +9,6 @@ import com.ing.mortgageloan.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
-	public Customer findByEmailAndPassword(String email, String password);
+	public Customer findByEmailIdAndPassword(String emailId, String password);
 	
 }

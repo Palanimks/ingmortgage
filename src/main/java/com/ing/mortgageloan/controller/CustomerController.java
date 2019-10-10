@@ -35,8 +35,8 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto logindto) throws Exception {
-		return new ResponseEntity<>(loginService.login(logindto), HttpStatus.ACCEPTED);
+	public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) throws Exception {
+		return new ResponseEntity<>(loginService.login(loginRequestDto), HttpStatus.ACCEPTED);
 	}
 	
 }
