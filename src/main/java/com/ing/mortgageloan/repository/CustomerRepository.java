@@ -5,11 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.ing.mortgageloan.entity.Customer;
 
-
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long>{
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-	public Customer findByEmailIdAndPassword(String email, String password);
+	public Customer findByEmailIdAndPassword(String emailId, String password);
 
-	
 }

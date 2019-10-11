@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import com.ing.mortgageloan.dto.CustomerRequestDto;
 import com.ing.mortgageloan.dto.CustomerResponseDto;
 
-
-
 @Service
 public interface CustomerService {
 
