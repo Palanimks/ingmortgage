@@ -43,5 +43,11 @@ public class Account {
 	public void setCustomerId(Customer customerId) {
 		this.customerId = customerId;
 	}
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + ", accountType=" + accountType + ", accountBalance="
+				+ accountBalance + ", customerId=" + customerId + "]";
+	}
 
+	
 }

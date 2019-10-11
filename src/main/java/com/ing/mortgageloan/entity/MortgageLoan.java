@@ -21,6 +21,8 @@ public class MortgageLoan {
 	private Double emi;
 	private String propertyType;
 	private Double propertyValue;
+	private Double outstandingAmount=loanAmount;
+	
 	@OneToOne
 	private Customer customerId;
 	
@@ -78,7 +80,18 @@ public class MortgageLoan {
 	public void setCustomerId(Customer customerId) {
 		this.customerId = customerId;
 	}
-	
-	
+	public Double getOutstandingAmount() {
+		return outstandingAmount;
+	}
+	public void setOutstandingAmount(Double outstandingAmount) {
+		this.outstandingAmount = outstandingAmount;
+	}
+	@Override
+	public String toString() {
+		return "MortgageLoan [loanAccountNumber=" + loanAccountNumber + ", loanAmount=" + loanAmount + ", tenure="
+				+ tenure + ", status=" + status + ", rateOfInterest=" + rateOfInterest + ", emi=" + emi
+				+ ", propertyType=" + propertyType + ", propertyValue=" + propertyValue + ", outstandingAmount="
+				+ outstandingAmount + ", customerId=" + customerId + "]";
+	}
 
 }

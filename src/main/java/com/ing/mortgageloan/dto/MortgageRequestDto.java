@@ -6,10 +6,12 @@ public class MortgageRequestDto {
 	private Double propertyValue;
 	private String propertyType;
 	private Double annualSalary;
-	private Float tenure;
+	private Integer tenure;
 	private Double loanAmount;
 	private Double emi;
 	private Float rateOfInterest;
+	private Double outstandingAmount;
+	
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -34,10 +36,10 @@ public class MortgageRequestDto {
 	public void setAnnualSalary(Double annualSalary) {
 		this.annualSalary = annualSalary;
 	}
-	public Float getTenure() {
+	public Integer getTenure() {
 		return tenure;
 	}
-	public void setLoanTenure(Float tenure) {
+	public void setTenure(Integer tenure) {
 		this.tenure = tenure;
 	}
 	public Double getLoanAmount() {
@@ -58,6 +60,13 @@ public class MortgageRequestDto {
 	public void setRateOfInterest(Float rateOfInterest) {
 		this.rateOfInterest = rateOfInterest;
 	}
+	public Double getOutstandingAmount() {
+		return outstandingAmount;
+	}
+	public void setOutstandingAmount(Double outstandingAmount) {
+		this.outstandingAmount = outstandingAmount;
+	}
+	
 	
 	
 }

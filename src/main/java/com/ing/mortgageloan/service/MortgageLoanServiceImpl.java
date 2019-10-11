@@ -1,10 +1,14 @@
 package com.ing.mortgageloan.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.ing.mortgageloan.dto.MortgageRequestDto;
@@ -90,5 +94,34 @@ public class MortgageLoanServiceImpl implements MortgageLoanService{
 		return mortgageResponseDto;
 		
 	}
+	
+	@Scheduled(cron = "0 */3 * ? * *")
+	public void emi() {
+		
+		log.info("Into EMI Repayment Service");
+		
+		List<Customer> customerList=customerRepository.findAll();
+		System.out.println("------"+customerList);
+		customerList.stream().forEach(customer ->{
+			Account account = accountRepository.findByCustomerId(customer);
+			MortgageLoan mortgageLoan = mortgageLoanRepository.findByCustomerId(customer);
+			
+			log.info("Account"+account+"MortgageLoan"+mortgageLoan);
+			
+			if( account != null && mortgageLoan != null && mortgageLoan.getOutstandingAmount() > 0 && mortgageLoan.getTenure() > 0) {
+				if(account.getAccountBalance() < mortgageLoan.getEmi()) {
+					throw new CommonException("Insufficient Account Balance");
+				}
+				else {
+					account.setAccountBalance(account.getAccountBalance()-mortgageLoan.getEmi());
+					mortgageLoan.setOutstandingAmount(mortgageLoan.getOutstandingAmount()-mortgageLoan.getEmi());
+					mortgageLoan.setTenure(mortgageLoan.getTenure()-1);
+				}
+				accountRepository.save(account);
+				mortgageLoanRepository.save(mortgageLoan);
+			}
+			
+		});
+	   }
 
 }
