@@ -21,7 +21,7 @@ public class MortgageLoanController {
 	@Autowired
 	MortgageLoanService mortgageLoanService;
 	
-	@PostMapping("/loan")
+	@PostMapping("/loanmortgage")
 	private MortgageResponseDto applyLoan(@Valid @RequestBody MortgageRequestDto mortgageRequestDto) {
 		
 		return mortgageLoanService.applyLoan(mortgageRequestDto);

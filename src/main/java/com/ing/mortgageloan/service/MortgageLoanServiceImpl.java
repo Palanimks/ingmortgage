@@ -56,7 +56,7 @@ public class MortgageLoanServiceImpl implements MortgageLoanService{
 	@Override
 	public MortgageResponseDto applyLoan(MortgageRequestDto mortgageRequestDto) {
 		
-		log.info("Into Loan Apply Service");
+		//log.info("Into Loan Apply Service");
 		
 		Optional<Customer> customer=customerRepository.findById(mortgageRequestDto.getCustomerId());
 		Account account = new Account();
@@ -69,7 +69,7 @@ public class MortgageLoanServiceImpl implements MortgageLoanService{
 		}
 		Double isEligible=(mortgageRequestDto.getAnnualSalary()/12)/2;
 		
-		log.info("Is Eligible?"+isEligible+"EMI"+mortgageRequestDto.getEmi());
+		//log.info("Is Eligible?"+isEligible+"EMI"+mortgageRequestDto.getEmi());
 		if(isEligible.compareTo(mortgageRequestDto.getEmi()) != 1) {
 			throw new CommonException(eligibleConstant);
 		}
@@ -98,7 +98,7 @@ public class MortgageLoanServiceImpl implements MortgageLoanService{
 	@Scheduled(cron = "0 */3 * ? * *")
 	public void emi() {
 		
-		log.info("Into EMI Repayment Service");
+		//log.info("Into EMI Repayment Service");
 		
 		List<Customer> customerList=customerRepository.findAll();
 		System.out.println("------"+customerList);
@@ -106,7 +106,7 @@ public class MortgageLoanServiceImpl implements MortgageLoanService{
 			Account account = accountRepository.findByCustomerId(customer);
 			MortgageLoan mortgageLoan = mortgageLoanRepository.findByCustomerId(customer);
 			
-			log.info("Account"+account+"MortgageLoan"+mortgageLoan);
+			//log.info("Account"+account+"MortgageLoan"+mortgageLoan);
 			
 			if( account != null && mortgageLoan != null && mortgageLoan.getOutstandingAmount() > 0 && mortgageLoan.getTenure() > 0) {
 				if(account.getAccountBalance() < mortgageLoan.getEmi()) {
