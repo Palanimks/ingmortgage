@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Account {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long accountNumber;
@@ -18,28 +18,35 @@ public class Account {
 	private Double accountBalance;
 	@OneToOne
 	private Customer customerId;
-	
+
 	public Long getAccountNumber() {
 		return accountNumber;
 	}
+
 	public void setAccountNumber(Long accountNumber) {
 		this.accountNumber = accountNumber;
 	}
+
 	public String getAccountType() {
 		return accountType;
 	}
+
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+
 	public Double getAccountBalance() {
 		return accountBalance;
 	}
+
 	public void setAccountBalance(Double accountBalance) {
 		this.accountBalance = accountBalance;
 	}
+
 	public Customer getCustomerId() {
 		return customerId;
 	}
+
 	public void setCustomerId(Customer customerId) {
 		this.customerId = customerId;
 	}
